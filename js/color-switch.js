@@ -17,16 +17,18 @@ const randomIntegerFromInterval = (min, max) => {
 let intervalId = null;
 let isActive = false;
 
-function updateBodyColor(arr) {
+function updateBodyColor() {
   if (isActive) {
     return;
   }
   isActive = true;
   intervalId = setInterval(() => {
-    const i = randomIntegerFromInterval(0, arr.length - 1);
-    const color = arr[i];
+    const i = randomIntegerFromInterval(0, colors.length - 1);
+    const color = colors[i];
     document.body.style.backgroundColor = color;
+    console.log('works1');
   }, 1000);
+  console.log('works2');
 }
 
 function stopUpdateBodyColor() {
@@ -34,7 +36,5 @@ function stopUpdateBodyColor() {
   isActive = false;
 }
 
-refs.startBtn.addEventListener('click', () => {
-  updateBodyColor(colors);
-});
+refs.startBtn.addEventListener('click', updateBodyColor);
 refs.stopBtn.addEventListener('click', stopUpdateBodyColor);
